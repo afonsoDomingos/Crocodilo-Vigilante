@@ -4,6 +4,14 @@
  * serverless function invocations in production.
  */
 import mongoose from 'mongoose';
+import dns from 'dns';
+
+// Ensure SRV records can be resolved reliably across local DNS providers
+try {
+  dns.setServers(['8.8.8.8', '1.1.1.1']);
+} catch {
+  // Ignore if running in environments with locked DNS
+}
 
 interface MongooseCache {
   conn: typeof mongoose | null;
