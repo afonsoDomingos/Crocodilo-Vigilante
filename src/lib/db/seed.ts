@@ -1,10 +1,13 @@
 import bcrypt from 'bcryptjs';
-import { DatabaseSchema } from './index';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type DatabaseSchema = Record<string, any>;
 
 // Pre-hashed 'Password123!' with bcrypt
 const DEFAULT_PASSWORD_HASH = bcrypt.hashSync('Password123!', 10);
 const ADMIN_PASSWORD_HASH = bcrypt.hashSync('Admin123!', 10);
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function getInitialSeedData(): DatabaseSchema {
   const now = new Date().toISOString();
 

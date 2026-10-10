@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth/session';
-import { getDatabase } from '@/lib/db';
+import { connectToDatabase } from '@/lib/db/mongoose';
+import { SecurityProfileModel, ApplicationModel } from '@/lib/db/models';
 import { addVerificationDocument } from '@/lib/db/repository';
 
 export async function POST(req: NextRequest) {
@@ -10,13 +11,14 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Acesso não autorizado.' }, { status: 403 });
     }
 
-    const db = getDatabase();
-    const sp = db.securityProfiles.find((p) => p.userId === session.userId);
+    await connectToDatabase();
+
+    const sp = await SecurityProfileModel.findOne({ userId: session.userId }).select('_id').lean();
     if (!sp) {
       return NextResponse.json({ error: 'Perfil não encontrado.' }, { status: 404 });
     }
 
-    const app = db.applications.find((a) => a.securityProfileId === sp.id);
+    const app = await ApplicationModel.findOne({ securityProfileId: sp._id }).select('_id').lean();
     if (!app) {
       return NextResponse.json({ error: 'Candidatura não encontrada.' }, { status: 404 });
     }
@@ -29,9 +31,9 @@ export async function POST(req: NextRequest) {
     }
 
     // Secure encrypted key reference (Never public URL)
-    const fileKey = `private_vault/sp_${sp.id}/${Date.now()}_${fileName.replace(/[^a-zA-Z0-9._-]/g, '_')}`;
+    const fileKey = `private_vault/sp_${sp._id}/${Date.now()}_${fileName.replace(/[^a-zA-Z0-9._-]/g, '_')}`;
 
-    const doc = await addVerificationDocument(app.id, {
+    const doc = await addVerificationDocument(app._id as string, {
       docType,
       fileName,
       fileSize: Number(fileSize) || 102400,
@@ -40,7 +42,8 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ success: true, document: doc });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    console.error('Document upload error:', error);
     return NextResponse.json({ error: 'Erro ao registar documento.' }, { status: 500 });
   }
 }

@@ -24,8 +24,15 @@ import {
 } from 'lucide-react';
 import { getApprovedGuards } from '@/lib/db/repository';
 
+export const dynamic = 'force-dynamic';
+
 export default async function HomePage() {
-  const verifiedGuards = await getApprovedGuards();
+  let verifiedGuards: Awaited<ReturnType<typeof getApprovedGuards>> = [];
+  try {
+    verifiedGuards = await getApprovedGuards();
+  } catch (err) {
+    console.error('Notice: Could not load guards dynamically on HomePage:', err);
+  }
 
   const categories = [
     {

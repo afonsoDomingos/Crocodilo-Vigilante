@@ -1,6 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth/session';
-import { getDatabase } from '@/lib/db';
+import { connectToDatabase } from '@/lib/db/mongoose';
+import {
+  ClientProfileModel,
+  SecurityProfileModel,
+  BookingModel,
+  BookingRequestModel,
+  BookingAssignmentModel,
+  PaymentModel,
+  ServiceCategoryModel,
+  UserModel,
+} from '@/lib/db/models';
 import { createBookingRequestWithGuard } from '@/lib/db/repository';
 
 export async function GET(req: NextRequest) {
@@ -10,36 +20,35 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: 'Não autorizado.' }, { status: 401 });
     }
 
-    const db = getDatabase();
+    await connectToDatabase();
 
     if (session.role === 'CLIENT') {
-      const clientProfile = db.clientProfiles.find((cp) => cp.userId === session.userId);
-      if (!clientProfile) {
-        return NextResponse.json({ bookings: [] });
-      }
+      const clientProfile = await ClientProfileModel.findOne({ userId: session.userId }).lean();
+      if (!clientProfile) return NextResponse.json({ bookings: [] });
 
-      const clientBookings = db.bookings
-        .filter((b) => b.clientId === clientProfile.id)
-        .map((b) => {
-          const req = db.bookingRequests.find((r) => r.id === b.bookingRequestId);
-          const assignment = db.bookingAssignments.find((a) => a.bookingId === b.id);
+      const bookings = await BookingModel.find({ clientId: clientProfile._id }).lean();
+      const enriched = await Promise.all(
+        bookings.map(async (b) => {
+          const bookingReq = await BookingRequestModel.findById(b.bookingRequestId).lean();
+          const assignment = await BookingAssignmentModel.findOne({ bookingId: b._id }).lean();
           const guardProfile = assignment
-            ? db.securityProfiles.find((sp) => sp.id === assignment.securityProfileId)
+            ? await SecurityProfileModel.findById(assignment.securityProfileId).lean()
             : null;
           const guardUser = guardProfile
-            ? db.users.find((u) => u.id === guardProfile.userId)
+            ? await UserModel.findById(guardProfile.userId).select('name phone avatarUrl').lean()
             : null;
-          const payment = db.payments.find((p) => p.bookingId === b.id);
-          const category = req
-            ? db.serviceCategories.find((c) => c.id === req.categoryId)
+          const payment = await PaymentModel.findOne({ bookingId: b._id }).lean();
+          const category = bookingReq
+            ? await ServiceCategoryModel.findById(bookingReq.categoryId).select('name').lean()
             : null;
 
           return {
             ...b,
-            request: req,
+            id: b._id,
+            request: bookingReq ? { ...bookingReq, id: bookingReq._id } : null,
             guard: guardProfile
               ? {
-                  id: guardProfile.id,
+                  id: guardProfile._id,
                   name: guardUser?.name,
                   badgeNumber: guardProfile.badgeNumber,
                   phone: guardUser?.phone,
@@ -47,84 +56,90 @@ export async function GET(req: NextRequest) {
                   rating: guardProfile.rating,
                 }
               : null,
-            payment,
+            payment: payment ? { ...payment, id: payment._id } : null,
             categoryName: category?.name,
           };
-        });
+        })
+      );
 
-      return NextResponse.json({ bookings: clientBookings });
+      return NextResponse.json({ bookings: enriched });
     }
 
     if (session.role === 'PROFESSIONAL') {
-      const sp = db.securityProfiles.find((p) => p.userId === session.userId);
-      if (!sp) {
-        return NextResponse.json({ bookings: [] });
-      }
+      const sp = await SecurityProfileModel.findOne({ userId: session.userId }).lean();
+      if (!sp) return NextResponse.json({ bookings: [] });
 
-      const assignments = db.bookingAssignments.filter((a) => a.securityProfileId === sp.id);
-      const proBookings = assignments.map((asg) => {
-        const booking = db.bookings.find((b) => b.id === asg.bookingId);
-        const req = booking
-          ? db.bookingRequests.find((r) => r.id === booking.bookingRequestId)
-          : null;
-        const clientProfile = booking
-          ? db.clientProfiles.find((cp) => cp.id === booking.clientId)
-          : null;
-        const clientUser = clientProfile
-          ? db.users.find((u) => u.id === clientProfile.userId)
-          : null;
-        const category = req
-          ? db.serviceCategories.find((c) => c.id === req.categoryId)
-          : null;
+      const assignments = await BookingAssignmentModel.find({ securityProfileId: sp._id }).lean();
+      const proBookings = await Promise.all(
+        assignments.map(async (asg) => {
+          const booking = await BookingModel.findById(asg.bookingId).lean();
+          const bookingReq = booking
+            ? await BookingRequestModel.findById(booking.bookingRequestId).lean()
+            : null;
+          const clientProfile = booking
+            ? await ClientProfileModel.findById(booking.clientId).lean()
+            : null;
+          const clientUser = clientProfile
+            ? await UserModel.findById(clientProfile.userId).select('name phone').lean()
+            : null;
+          const category = bookingReq
+            ? await ServiceCategoryModel.findById(bookingReq.categoryId).select('name').lean()
+            : null;
 
-        return {
-          assignmentId: asg.id,
-          assignmentStatus: asg.status,
-          booking,
-          request: req,
-          client: clientUser
-            ? {
-                name: clientUser.name,
-                phone: clientUser.phone,
-                city: clientProfile?.city,
-                address: clientProfile?.address,
-              }
-            : null,
-          categoryName: category?.name,
-        };
-      });
+          return {
+            assignmentId: asg._id,
+            assignmentStatus: asg.status,
+            booking: booking ? { ...booking, id: booking._id } : null,
+            request: bookingReq ? { ...bookingReq, id: bookingReq._id } : null,
+            client: clientUser
+              ? {
+                  name: clientUser.name,
+                  phone: clientUser.phone,
+                  city: clientProfile?.city,
+                  address: clientProfile?.address,
+                }
+              : null,
+            categoryName: category?.name,
+          };
+        })
+      );
 
       return NextResponse.json({ bookings: proBookings });
     }
 
     if (session.role === 'ADMIN') {
-      const allBookings = db.bookings.map((b) => {
-        const req = db.bookingRequests.find((r) => r.id === b.bookingRequestId);
-        const clientProfile = db.clientProfiles.find((cp) => cp.id === b.clientId);
-        const clientUser = clientProfile
-          ? db.users.find((u) => u.id === clientProfile.userId)
-          : null;
-        const assignment = db.bookingAssignments.find((a) => a.bookingId === b.id);
-        const guardProfile = assignment
-          ? db.securityProfiles.find((sp) => sp.id === assignment.securityProfileId)
-          : null;
-        const guardUser = guardProfile
-          ? db.users.find((u) => u.id === guardProfile.userId)
-          : null;
+      const allBookings = await BookingModel.find().lean();
+      const enriched = await Promise.all(
+        allBookings.map(async (b) => {
+          const bookingReq = await BookingRequestModel.findById(b.bookingRequestId).lean();
+          const clientProfile = await ClientProfileModel.findById(b.clientId).lean();
+          const clientUser = clientProfile
+            ? await UserModel.findById(clientProfile.userId).select('name').lean()
+            : null;
+          const assignment = await BookingAssignmentModel.findOne({ bookingId: b._id }).lean();
+          const guardProfile = assignment
+            ? await SecurityProfileModel.findById(assignment.securityProfileId).lean()
+            : null;
+          const guardUser = guardProfile
+            ? await UserModel.findById(guardProfile.userId).select('name').lean()
+            : null;
 
-        return {
-          ...b,
-          request: req,
-          clientName: clientUser?.name,
-          guardName: guardUser?.name,
-        };
-      });
+          return {
+            ...b,
+            id: b._id,
+            request: bookingReq ? { ...bookingReq, id: bookingReq._id } : null,
+            clientName: clientUser?.name,
+            guardName: guardUser?.name,
+          };
+        })
+      );
 
-      return NextResponse.json({ bookings: allBookings });
+      return NextResponse.json({ bookings: enriched });
     }
 
     return NextResponse.json({ bookings: [] });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    console.error('Bookings GET error:', error);
     return NextResponse.json({ error: 'Erro ao carregar contratações.' }, { status: 500 });
   }
 }
@@ -139,43 +154,20 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const db = getDatabase();
-    const clientProfile = db.clientProfiles.find((cp) => cp.userId === session.userId);
+    await connectToDatabase();
+    const clientProfile = await ClientProfileModel.findOne({ userId: session.userId }).lean();
     if (!clientProfile) {
-      return NextResponse.json(
-        { error: 'Perfil de cliente não configurado.' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Perfil de cliente não configurado.' }, { status: 400 });
     }
 
     const body = await req.json();
     const {
-      securityProfileId,
-      categoryId,
-      title,
-      description,
-      city,
-      neighborhood,
-      startDate,
-      endDate,
-      startTime,
-      endTime,
-      hours,
-      paymentMethod,
-      paymentReference,
+      securityProfileId, categoryId, title, description, city,
+      neighborhood, startDate, endDate, startTime, endTime,
+      hours, paymentMethod, paymentReference,
     } = body;
 
-    if (
-      !securityProfileId ||
-      !categoryId ||
-      !title ||
-      !city ||
-      !startDate ||
-      !endDate ||
-      !startTime ||
-      !endTime ||
-      !hours
-    ) {
+    if (!securityProfileId || !categoryId || !title || !city || !startDate || !endDate || !startTime || !endTime || !hours) {
       return NextResponse.json(
         { error: 'Todos os campos obrigatórios da contratação devem ser preenchidos.' },
         { status: 400 }
@@ -183,7 +175,7 @@ export async function POST(req: NextRequest) {
     }
 
     const result = await createBookingRequestWithGuard({
-      clientId: clientProfile.id,
+      clientId: clientProfile._id as string,
       securityProfileId,
       categoryId,
       title,
@@ -200,10 +192,11 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ success: true, ...result });
-  } catch (error: any) {
-    console.error('Booking creation error:', error);
+  } catch (error: unknown) {
+    const err = error as Error;
+    console.error('Booking creation error:', err);
     return NextResponse.json(
-      { error: error?.message || 'Falha ao processar contratação.' },
+      { error: err?.message || 'Falha ao processar contratação.' },
       { status: 400 }
     );
   }

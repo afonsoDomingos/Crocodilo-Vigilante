@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getUserByEmail } from '@/lib/db/repository';
-import { getDatabase } from '@/lib/db';
+import { connectToDatabase } from '@/lib/db/mongoose';
+import { ClientProfileModel, SecurityProfileModel } from '@/lib/db/models';
 import { setSessionCookie } from '@/lib/auth/session';
+import { seedDatabaseIfEmpty } from '@/lib/db/repository';
 import bcrypt from 'bcryptjs';
 
 export async function POST(req: NextRequest) {
@@ -14,6 +16,9 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
+
+    await connectToDatabase();
+    await seedDatabaseIfEmpty();
 
     const user = await getUserByEmail(email);
     if (!user) {
@@ -38,15 +43,14 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const db = getDatabase();
     let profileId: string | undefined;
 
     if (user.role === 'CLIENT') {
-      const cp = db.clientProfiles.find((p) => p.userId === user.id);
-      profileId = cp?.id;
+      const cp = await ClientProfileModel.findOne({ userId: user.id }).select('_id').lean();
+      profileId = cp?._id as string | undefined;
     } else if (user.role === 'PROFESSIONAL') {
-      const sp = db.securityProfiles.find((p) => p.userId === user.id);
-      profileId = sp?.id;
+      const sp = await SecurityProfileModel.findOne({ userId: user.id }).select('_id').lean();
+      profileId = sp?._id as string | undefined;
     }
 
     await setSessionCookie({
@@ -68,10 +72,11 @@ export async function POST(req: NextRequest) {
         profileId,
       },
     });
-  } catch (error: any) {
-    console.error('Login error:', error);
+  } catch (error: unknown) {
+    const err = error as Error;
+    console.error('Login error:', err);
     return NextResponse.json(
-      { error: error?.message || 'Erro ao processar início de sessão.' },
+      { error: err?.message || 'Erro ao processar início de sessão.' },
       { status: 500 }
     );
   }

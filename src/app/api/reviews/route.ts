@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth/session';
-import { getDatabase } from '@/lib/db';
+import { connectToDatabase } from '@/lib/db/mongoose';
+import { ClientProfileModel } from '@/lib/db/models';
 import { addReview } from '@/lib/db/repository';
 
 export async function POST(req: NextRequest) {
@@ -10,8 +11,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Apenas clientes podem avaliar serviços.' }, { status: 403 });
     }
 
-    const db = getDatabase();
-    const cp = db.clientProfiles.find((c) => c.userId === session.userId);
+    await connectToDatabase();
+    const cp = await ClientProfileModel.findOne({ userId: session.userId }).select('_id').lean();
     if (!cp) {
       return NextResponse.json({ error: 'Perfil de cliente não encontrado.' }, { status: 404 });
     }
@@ -25,7 +26,7 @@ export async function POST(req: NextRequest) {
 
     const review = await addReview({
       bookingId,
-      clientId: cp.id,
+      clientId: cp._id as string,
       securityProfileId,
       ratingPunctuality: Number(ratingPunctuality) || 5,
       ratingProfessionalism: Number(ratingProfessionalism) || 5,
@@ -34,7 +35,8 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ success: true, review });
-  } catch (error: any) {
-    return NextResponse.json({ error: error?.message || 'Erro ao submeter avaliação.' }, { status: 400 });
+  } catch (error: unknown) {
+    const err = error as Error;
+    return NextResponse.json({ error: err?.message || 'Erro ao submeter avaliação.' }, { status: 400 });
   }
 }
