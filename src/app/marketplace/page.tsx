@@ -217,16 +217,16 @@ function MarketplaceContent() {
 
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
         {/* Marketplace Header */}
-        <div className="mb-8">
+        <div className="mb-6">
           <div className="flex items-center gap-2 text-xs font-semibold text-[#D9AD45] uppercase tracking-wider mb-1">
             <ShieldCheck className="w-4 h-4" />
-            <span>Marketplace de Segurança Privada Desarmada</span>
+            <span>Marketplace de Segurança Desarmada</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black text-white">
-            Pesquisa & Contratação de Seguranças
+          <h1 className="text-2xl sm:text-4xl font-black text-white">
+            Pesquisar e Contratar Seguranças
           </h1>
-          <p className="text-sm text-zinc-400 mt-2 max-w-2xl leading-relaxed">
-            Todos os profissionais listados passaram por conferência de identificação civil, verificação de registo criminal e validação administrativa.
+          <p className="text-xs sm:text-sm text-zinc-400 mt-1.5 max-w-xl">
+            Profissionais certificados com registo criminal e identidade validados.
           </p>
         </div>
 

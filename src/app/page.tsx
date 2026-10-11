@@ -39,42 +39,42 @@ export default async function HomePage() {
     {
       id: 'cat_eventos',
       name: 'Segurança para Eventos',
-      desc: 'Casamentos, conferências, festas privadas e encontros corporativos com controlo de acessos rigoroso.',
+      desc: 'Casamentos, festas privadas e eventos corporativos.',
       icon: PartyPopper,
       tag: 'Eventos & Gala',
     },
     {
       id: 'cat_empresarial',
       name: 'Segurança Empresarial',
-      desc: 'Proteção preventiva para escritórios, sedes administrativas e instalações corporativas.',
+      desc: 'Proteção para escritórios, sedes e empresas.',
       icon: Building2,
       tag: 'Corporativo',
     },
     {
       id: 'cat_residencial',
       name: 'Segurança Residencial',
-      desc: 'Vigilância contínua para residências particulares, condomínios fechados e quintas familiares.',
+      desc: 'Vigilância para residências e condomínios.',
       icon: Home,
       tag: 'Habitação',
     },
     {
       id: 'cat_obras',
       name: 'Segurança para Obras',
-      desc: 'Fiscalização diurna e noturna de estaleiros de construção civil e proteção de maquinaria.',
+      desc: 'Fiscalização de estaleiros e maquinaria.',
       icon: HardHat,
       tag: 'Estaleiros',
     },
     {
       id: 'cat_comercial',
       name: 'Segurança Comercial',
-      desc: 'Dissuasão de furtos e preservação da tranquilidade para lojas, supermercados e centros comerciais.',
+      desc: 'Dissuasão preventiva para lojas e comércio.',
       icon: Store,
       tag: 'Retalho',
     },
     {
       id: 'cat_acesso',
       name: 'Controlo de Acesso',
-      desc: 'Identificação metódica de visitantes, registo de viaturas e atendimento cordial em portarias.',
+      desc: 'Registo de entradas, viaturas e portarias.',
       icon: ShieldCheck,
       tag: 'Portarias',
     },
@@ -109,7 +109,7 @@ export default async function HomePage() {
 
                 {/* Description */}
                 <p className="text-sm sm:text-base md:text-lg text-zinc-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                  Encontre profissionais de segurança aprovados para proteger eventos, empresas, residências e outras necessidades. Escolha o serviço, consulte a disponibilidade e solicite profissionais adequados ao seu projeto.
+                  Contrate seguranças particulares verificados para eventos, empresas e residências em Moçambique.
                 </p>
 
                 {/* Hero CTAs */}
@@ -172,8 +172,8 @@ export default async function HomePage() {
                         <FileCheck2 className="w-4 h-4" />
                       </div>
                       <div>
-                        <h4 className="text-sm font-semibold text-white">Candidatura em 5 Etapas</h4>
-                        <p className="text-xs text-zinc-400">Registo criminal, identificação civil e competências conferidas por analistas.</p>
+                        <h4 className="text-sm font-semibold text-white">Profissionais Verificados</h4>
+                        <p className="text-xs text-zinc-400">BI e registo criminal validados.</p>
                       </div>
                     </div>
 
@@ -183,7 +183,7 @@ export default async function HomePage() {
                       </div>
                       <div>
                         <h4 className="text-sm font-semibold text-white">Sem Conflitos de Agenda</h4>
-                        <p className="text-xs text-zinc-400">Bloqueio automático de horários sobrepostos em tempo real no servidor.</p>
+                        <p className="text-xs text-zinc-400">Disponibilidade em tempo real.</p>
                       </div>
                     </div>
 
@@ -192,8 +192,8 @@ export default async function HomePage() {
                         <Lock className="w-4 h-4" />
                       </div>
                       <div>
-                        <h4 className="text-sm font-semibold text-white">Privacidade & Proteção</h4>
-                        <p className="text-xs text-zinc-400">Documentos pessoais e moradas residenciais guardados em cofre privado.</p>
+                        <h4 className="text-sm font-semibold text-white">100% Desarmados</h4>
+                        <p className="text-xs text-zinc-400">Segurança preventiva e pacífica.</p>
                       </div>
                     </div>
                   </div>
@@ -203,7 +203,7 @@ export default async function HomePage() {
                     href="/marketplace"
                     className="w-full py-3 rounded-lg bg-[#252525] hover:bg-[#2e2e2e] border border-[#3a3a3a] text-center text-xs font-semibold text-[#F2CC70] flex items-center justify-center gap-2 transition-colors"
                   >
-                    <span>Explorar Seguranças Aprovados Agora</span>
+                    <span>Explorar Seguranças Aprovados</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -226,19 +226,17 @@ export default async function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/20 to-black/30" />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/50 via-transparent to-[#0A0A0A]/50 hidden sm:block" />
 
-
-
                 {/* Bottom Card / Floating Banner Footer */}
                 <div className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 flex flex-col sm:flex-row items-stretch sm:items-end justify-between gap-3">
                   <div className="bg-black/80 backdrop-blur-md p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-[#D9AD45]/30 max-w-xl">
                     <span className="text-[10px] font-mono font-bold uppercase text-[#D9AD45] tracking-wider block">
-                      Corpo de Profissionais Verificados
+                      Segurança Verificada
                     </span>
-                    <h3 className="text-sm sm:text-xl font-black text-white mt-0.5">
-                      Segurança Privada Desarmada de Alto Padrão
+                    <h3 className="text-sm sm:text-lg font-black text-white mt-0.5">
+                      Proteção Preventiva de Alto Padrão
                     </h3>
-                    <p className="text-[11px] sm:text-xs text-zinc-300 mt-1 line-clamp-2">
-                      Fardamento institucional, crachá oficial e atuação preventiva para eventos, empresas, condomínios e estaleiros em Moçambique.
+                    <p className="text-[11px] sm:text-xs text-zinc-300 mt-1">
+                      Profissionais fardados e credenciados para a sua tranquilidade.
                     </p>
                   </div>
 
@@ -257,47 +255,47 @@ export default async function HomePage() {
         </section>
 
         {/* SECTION: COMO FUNCIONA (3 PASSOS) */}
-        <section id="como-funciona" className="py-20 bg-[#0E0E0E] border-b border-[#202020]">
+        <section id="como-funciona" className="py-16 bg-[#0E0E0E] border-b border-[#202020]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-2xl mx-auto mb-16">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#D9AD45]">Simples e Rastreável</span>
-              <h2 className="text-3xl font-black text-white mt-1">Como Funciona a Plataforma</h2>
-              <p className="text-sm text-zinc-400 mt-2">
-                Três etapas descomplicadas para garantir proteção profissional no seu evento, residência ou negócio.
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#D9AD45]">Simples & Rápido</span>
+              <h2 className="text-2xl sm:text-3xl font-black text-white mt-1">Como Funciona</h2>
+              <p className="text-xs sm:text-sm text-zinc-400 mt-1.5">
+                Três passos para contratar segurança verificada.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
               {/* Step 1 */}
-              <div className="bg-[#141414] p-8 rounded-2xl border border-[#222] relative group hover:border-[#D9AD45]/40 transition-all">
-                <div className="w-12 h-12 rounded-xl gold-gradient-bg flex items-center justify-center text-[#0A0A0A] font-black text-lg mb-6">
+              <div className="bg-[#141414] p-6 sm:p-7 rounded-2xl border border-[#222] relative group hover:border-[#D9AD45]/40 transition-all">
+                <div className="w-10 h-10 rounded-xl gold-gradient-bg flex items-center justify-center text-[#0A0A0A] font-black text-base mb-4">
                   01
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2">Escolha o serviço</h3>
+                <h3 className="text-base font-bold text-white mb-1.5">Escolha o Serviço</h3>
                 <p className="text-xs text-zinc-400 leading-relaxed">
-                  Defina se precisa de segurança para um casamento, ronda residencial, conferência corporativa ou fiscalização de obra.
+                  Defina o tipo de evento, residência ou empresa e o local pretendido.
                 </p>
               </div>
 
               {/* Step 2 */}
-              <div className="bg-[#141414] p-8 rounded-2xl border border-[#222] relative group hover:border-[#D9AD45]/40 transition-all">
-                <div className="w-12 h-12 rounded-xl gold-gradient-bg flex items-center justify-center text-[#0A0A0A] font-black text-lg mb-6">
+              <div className="bg-[#141414] p-6 sm:p-7 rounded-2xl border border-[#222] relative group hover:border-[#D9AD45]/40 transition-all">
+                <div className="w-10 h-10 rounded-xl gold-gradient-bg flex items-center justify-center text-[#0A0A0A] font-black text-base mb-4">
                   02
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2">Encontre profissionais</h3>
+                <h3 className="text-base font-bold text-white mb-1.5">Veja os Profissionais</h3>
                 <p className="text-xs text-zinc-400 leading-relaxed">
-                  Filtre por província, bairro, avaliação média e disponibilidade real. Consulte perfis públicos com crachá oficial.
+                  Consulte perfis com crachá oficial, avaliações e tarifas por hora.
                 </p>
               </div>
 
               {/* Step 3 */}
-              <div className="bg-[#141414] p-8 rounded-2xl border border-[#222] relative group hover:border-[#D9AD45]/40 transition-all">
-                <div className="w-12 h-12 rounded-xl gold-gradient-bg flex items-center justify-center text-[#0A0A0A] font-black text-lg mb-6">
+              <div className="bg-[#141414] p-6 sm:p-7 rounded-2xl border border-[#222] relative group hover:border-[#D9AD45]/40 transition-all">
+                <div className="w-10 h-10 rounded-xl gold-gradient-bg flex items-center justify-center text-[#0A0A0A] font-black text-base mb-4">
                   03
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2">Solicite e acompanhe</h3>
+                <h3 className="text-base font-bold text-white mb-1.5">Contrate Online</h3>
                 <p className="text-xs text-zinc-400 leading-relaxed">
-                  Envie o pedido, valide as horas sem risco de conflito de agenda e acompanhe o serviço diretamente no seu painel.
+                  Confirme a reserva via M-Pesa ou e-Mola sem conflitos de horário.
                 </p>
               </div>
             </div>
@@ -305,19 +303,19 @@ export default async function HomePage() {
         </section>
 
         {/* SECTION: CATEGORIAS DE SERVIÇOS */}
-        <section id="servicos" className="py-20 bg-[#0A0A0A] border-b border-[#202020]">
+        <section id="servicos" className="py-16 bg-[#0A0A0A] border-b border-[#202020]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-10">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-[#D9AD45]">Especialidades</span>
-                <h2 className="text-3xl font-black text-white mt-1">Categorias de Segurança Desarmada</h2>
-                <p className="text-sm text-zinc-400 mt-2 max-w-xl">
-                  Cada ambiente exige protocolos preventivos específicos. Conheça as principais categorias configuradas.
+                <h2 className="text-2xl sm:text-3xl font-black text-white mt-1">Categorias de Segurança</h2>
+                <p className="text-xs sm:text-sm text-zinc-400 mt-1 max-w-xl">
+                  Serviços preventivos adaptados a cada necessidade.
                 </p>
               </div>
               <Link
                 href="/marketplace"
-                className="mt-4 md:mt-0 inline-flex items-center gap-2 text-sm font-semibold text-[#F2CC70] hover:text-white"
+                className="mt-3 md:mt-0 inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#F2CC70] hover:text-white"
               >
                 <span>Ver todas as categorias</span>
                 <ArrowRight className="w-4 h-4" />
@@ -445,55 +443,55 @@ export default async function HomePage() {
         </section>
 
         {/* SECTION: CONFIANÇA & NORMAS LEGAIS */}
-        <section id="confianca" className="py-20 bg-[#0A0A0A]">
+        <section id="confianca" className="py-16 bg-[#0A0A0A]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-[#D9AD45]">Padrões e Integridade</span>
-                <h2 className="text-3xl font-black text-white mt-1">
-                  Porquê a Plataforma Crocodilo Vigilante Inspira Confiança
+                <h2 className="text-2xl sm:text-3xl font-black text-white mt-1">
+                  Segurança com Total Confiança
                 </h2>
-                <p className="text-sm text-zinc-300 mt-3 leading-relaxed">
-                  Não somos apenas um catálogo de anúncios. Somos um sistema estruturado que valida a identidade e idoneidade de cada profissional antes de o conectar com famílias e empresas moçambicanas.
+                <p className="text-xs sm:text-sm text-zinc-300 mt-2 leading-relaxed">
+                  Conectamos apenas profissionais com identidade confirmada e registo criminal verificado.
                 </p>
 
-                <div className="mt-8 space-y-4">
+                <div className="mt-6 space-y-3.5">
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#D9AD45] mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#D9AD45] mt-0.5 flex-shrink-0" />
                     <div>
-                      <h4 className="text-sm font-bold text-white">Sem Porte de Arma de Fogo</h4>
+                      <h4 className="text-sm font-bold text-white">100% Desarmados</h4>
                       <p className="text-xs text-zinc-400">
-                        Todos os serviços destinam-se exclusivamente a segurança física preventiva, vigilância de acessos e dissuasão pacífica desarmada.
+                        Atuação estritamente preventiva, vigilância e dissuasão pacífica.
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#D9AD45] mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#D9AD45] mt-0.5 flex-shrink-0" />
                     <div>
-                      <h4 className="text-sm font-bold text-white">Verificação de Idoneidade e Documentos</h4>
+                      <h4 className="text-sm font-bold text-white">Verificação de Documentos</h4>
                       <p className="text-xs text-zinc-400">
-                        Conferência de BI/DIRE e registo criminal limpo através de análise interna antes da ativação do crachá.
+                        BI e registo criminal limpo validados pela equipa administrativa.
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#D9AD45] mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#D9AD45] mt-0.5 flex-shrink-0" />
                     <div>
-                      <h4 className="text-sm font-bold text-white">Prevenção Rigorosa de Conflitos</h4>
+                      <h4 className="text-sm font-bold text-white">Sem Conflitos de Horário</h4>
                       <p className="text-xs text-zinc-400">
-                        O sistema impede que o mesmo profissional seja contratado para períodos sobrepostos por diferentes clientes.
+                        Bloqueio automático de marcações sobrepostas para o mesmo segurança.
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#D9AD45] mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#D9AD45] mt-0.5 flex-shrink-0" />
                     <div>
-                      <h4 className="text-sm font-bold text-white">Avaliações Auditadas</h4>
+                      <h4 className="text-sm font-bold text-white">Avaliações Verificadas</h4>
                       <p className="text-xs text-zinc-400">
-                        Apenas clientes com serviços reais devidamente concluídos podem atribuir notas de pontualidade e postura.
+                        Notas e comentários atribuídos apenas após serviços concluídos.
                       </p>
                     </div>
                   </div>
@@ -501,39 +499,38 @@ export default async function HomePage() {
               </div>
 
               {/* Security Quote Banner */}
-              <div className="bg-gradient-to-br from-[#181818] to-[#101010] p-8 rounded-3xl border border-[#262626] relative overflow-hidden">
+              <div className="bg-gradient-to-br from-[#181818] to-[#101010] p-6 sm:p-8 rounded-2xl sm:rounded-3xl border border-[#262626] relative overflow-hidden">
                 <div className="absolute -right-8 -bottom-8 opacity-5 text-white">
                   <Shield className="w-64 h-64" />
                 </div>
-                <div className="relative z-10 space-y-6">
-                  <div className="w-12 h-12 rounded-2xl bg-[#D9AD45]/20 flex items-center justify-center text-[#D9AD45]">
-                    <Shield className="w-6 h-6" />
+                <div className="relative z-10 space-y-4">
+                  <div className="w-10 h-10 rounded-xl bg-[#D9AD45]/20 flex items-center justify-center text-[#D9AD45]">
+                    <Shield className="w-5 h-5" />
                   </div>
-                  <blockquote className="text-lg font-medium text-zinc-200 italic leading-relaxed">
-                    &ldquo;Proteger o que é seu não deve ser um processo incerto. A nossa missão é fornecer profissionais pontuais, treinados e transparentes com respeito escrupuloso pela legalidade.&rdquo;
+                  <blockquote className="text-base sm:text-lg font-medium text-zinc-200 italic leading-relaxed">
+                    &ldquo;Proteger o que é seu com pontualidade, transparência e respeito escrupuloso pela legalidade.&rdquo;
                   </blockquote>
-                  <div className="pt-4 border-t border-[#262626] flex items-center justify-between">
+                  <div className="pt-3 border-t border-[#262626] flex items-center justify-between">
                     <div>
-                      <span className="block text-sm font-bold text-white">CROCODILO VIGILANTE</span>
-                      <span className="text-xs text-zinc-400">Maputo, Moçambique</span>
+                      <span className="block text-xs sm:text-sm font-bold text-white">CROCODILO VIGILANTE</span>
+                      <span className="text-[11px] text-zinc-400">Moçambique</span>
                     </div>
-                    <span className="text-xs font-mono text-[#D9AD45]">MZN • MPESA • E-MOLA</span>
+                    <span className="text-xs font-mono text-[#D9AD45]">M-PESA • E-MOLA</span>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </section>
 
         {/* CTA FINAL BANNER */}
-        <section className="py-16 bg-[#121212] border-t border-[#202020]">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-6">
-            <h2 className="text-3xl sm:text-4xl font-black text-white">
-              Pronto para contratar com tranquilidade?
+        <section className="py-14 bg-[#121212] border-t border-[#202020]">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-4">
+            <h2 className="text-2xl sm:text-3xl font-black text-white">
+              Pronto para Contratar com Tranquilidade?
             </h2>
-            <p className="text-sm sm:text-base text-zinc-300 max-w-xl mx-auto">
-              Seja para um evento este fim de semana ou para a proteção diária da sua empresa, a equipa do Crocodilo Vigilante está pronta.
+            <p className="text-xs sm:text-sm text-zinc-300 max-w-lg mx-auto">
+              Proteção profissional para eventos, condomínios e empresas em Moçambique.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
               <Link
