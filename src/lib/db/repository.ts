@@ -70,7 +70,7 @@ async function getSettings() {
       commissionPercent: 10,
       serviceFeeFixed: 150,
       supportEmail: 'apoio@crocodilovigilante.co.mz',
-      supportPhone: '+258 84 000 9999',
+      supportPhone: '+258 86 697 9225',
       termsUrl: '/termos',
       privacyUrl: '/privacidade',
     });
