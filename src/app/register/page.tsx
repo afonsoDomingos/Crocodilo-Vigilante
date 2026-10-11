@@ -150,24 +150,32 @@ function RegisterContent() {
 
           <form onSubmit={handleRegister} className="space-y-4">
             {role === 'CLIENT' && (
-              <div className="flex gap-4 text-xs font-medium text-zinc-300">
-                <label className="flex items-center gap-1.5 cursor-pointer">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-medium text-zinc-300">
+                <label className={`flex items-center gap-2.5 p-2.5 rounded-xl border cursor-pointer transition-colors ${
+                  clientType === 'INDIVIDUAL'
+                    ? 'bg-[#1C1C1C] border-[#D9AD45]/50 text-white'
+                    : 'bg-[#161616] border-[#262626] text-zinc-400'
+                }`}>
                   <input
                     type="radio"
                     name="clientType"
                     checked={clientType === 'INDIVIDUAL'}
                     onChange={() => setClientType('INDIVIDUAL')}
-                    className="accent-[#D9AD45]"
+                    className="accent-[#D9AD45] w-4 h-4"
                   />
                   <span>Pessoa Singular / Família</span>
                 </label>
-                <label className="flex items-center gap-1.5 cursor-pointer">
+                <label className={`flex items-center gap-2.5 p-2.5 rounded-xl border cursor-pointer transition-colors ${
+                  clientType === 'COMPANY'
+                    ? 'bg-[#1C1C1C] border-[#D9AD45]/50 text-white'
+                    : 'bg-[#161616] border-[#262626] text-zinc-400'
+                }`}>
                   <input
                     type="radio"
                     name="clientType"
                     checked={clientType === 'COMPANY'}
                     onChange={() => setClientType('COMPANY')}
-                    className="accent-[#D9AD45]"
+                    className="accent-[#D9AD45] w-4 h-4"
                   />
                   <span>Empresa / Instituição</span>
                 </label>

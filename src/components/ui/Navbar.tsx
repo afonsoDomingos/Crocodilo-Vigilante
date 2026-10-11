@@ -241,49 +241,117 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Mobile menu trigger */}
+        {/* Mobile menu trigger & notifications */}
         <div className="md:hidden flex items-center gap-2">
+          {currentUser && (
+            <button
+              onClick={() => {
+                setIsNotifOpen(!isNotifOpen);
+                if (isMobileMenuOpen) setIsMobileMenuOpen(false);
+              }}
+              className="p-2 rounded-lg bg-[#141414] border border-[#262626] text-zinc-300 relative"
+              aria-label="Notificações"
+            >
+              <Bell className="w-4 h-4" />
+              {unreadCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-[#D9AD45] text-[#0A0A0A] text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                  {unreadCount}
+                </span>
+              )}
+            </button>
+          )}
+
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 text-zinc-300 hover:text-white"
+            onClick={() => {
+              setIsMobileMenuOpen(!isMobileMenuOpen);
+              if (isNotifOpen) setIsNotifOpen(false);
+            }}
+            className="p-2 text-zinc-300 hover:text-white rounded-lg bg-[#141414] border border-[#262626]"
             aria-label="Abrir menu"
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
 
+      {/* Mobile Notifications Dropdown */}
+      {isNotifOpen && (
+        <div className="md:hidden bg-[#141414] border-b border-[#2A2A2A] p-4 max-h-80 overflow-y-auto">
+          <div className="flex items-center justify-between pb-2 border-b border-[#202020]">
+            <span className="font-semibold text-xs text-white">Notificações</span>
+            <span className="text-[10px] text-zinc-400">{notifications.length} registos</span>
+          </div>
+          <div className="divide-y divide-[#202020] mt-2">
+            {notifications.length === 0 ? (
+              <p className="text-xs text-zinc-500 py-3 text-center">Sem notificações no momento</p>
+            ) : (
+              notifications.slice(0, 5).map((n) => (
+                <div key={n.id} className="py-2">
+                  <p className="text-xs font-semibold text-[#F2CC70]">{n.title}</p>
+                  <p className="text-[11px] text-zinc-300 mt-0.5">{n.message}</p>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      )}
+
       {/* Mobile Drawer */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-[#101010] border-b border-[#202020] px-4 py-4 space-y-3">
-          <Link
-            href="/"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="block text-sm font-medium text-zinc-300 hover:text-[#F2CC70]"
-          >
-            Início
-          </Link>
-          <Link
-            href="/marketplace"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="block text-sm font-semibold text-[#F2CC70]"
-          >
-            Marketplace de Seguranças
-          </Link>
-          <Link
-            href="/#como-funciona"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="block text-sm font-medium text-zinc-300 hover:text-[#F2CC70]"
-          >
-            Como Funciona
-          </Link>
-          <Link
-            href="/#servicos"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="block text-sm font-medium text-zinc-300 hover:text-[#F2CC70]"
-          >
-            Categorias de Segurança
-          </Link>
+        <div className="md:hidden bg-[#101010]/95 backdrop-blur-xl border-b border-[#202020] px-4 py-5 space-y-4 animate-in slide-in-from-top-3">
+          {currentUser && (
+            <div className="p-3 rounded-xl bg-[#181818] border border-[#262626] flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-full bg-[#202020] flex items-center justify-center border border-[#D9AD45]/40">
+                  <User className="w-4 h-4 text-[#F2CC70]" />
+                </div>
+                <div>
+                  <span className="text-xs font-bold text-white block">{currentUser.name}</span>
+                  <span className="text-[10px] text-zinc-400 block">{currentUser.email}</span>
+                </div>
+              </div>
+              <div>{getRoleBadge()}</div>
+            </div>
+          )}
+
+          <nav className="space-y-1">
+            <Link
+              href="/"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-300 hover:bg-[#1a1a1a] hover:text-[#F2CC70] transition-colors"
+            >
+              Início
+            </Link>
+            <Link
+              href="/marketplace"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-bold text-[#F2CC70] bg-[#1a1810] border border-[#D9AD45]/20"
+            >
+              <span>Marketplace de Seguranças</span>
+              <Search className="w-4 h-4 text-[#D9AD45]" />
+            </Link>
+            <Link
+              href="/#como-funciona"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-300 hover:bg-[#1a1a1a] hover:text-[#F2CC70] transition-colors"
+            >
+              Como Funciona
+            </Link>
+            <Link
+              href="/#servicos"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-300 hover:bg-[#1a1a1a] hover:text-[#F2CC70] transition-colors"
+            >
+              Categorias de Segurança
+            </Link>
+            <Link
+              href="/#confianca"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-300 hover:bg-[#1a1a1a] hover:text-[#F2CC70] transition-colors"
+            >
+              Confiança & Normas
+            </Link>
+          </nav>
 
           <div className="pt-3 border-t border-[#202020] flex flex-col gap-2">
             {currentUser ? (
@@ -291,33 +359,33 @@ export default function Navbar() {
                 <Link
                   href={getDashboardLink()}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-full text-center py-2.5 rounded-lg bg-[#202020] text-sm font-semibold text-[#F2CC70]"
+                  className="w-full text-center py-3 rounded-xl gold-gradient-bg text-xs font-bold text-[#0A0A0A] shadow-md"
                 >
-                  Ir para Painel ({currentUser.role})
+                  Ir para Painel de Gestão
                 </Link>
                 <button
                   onClick={() => {
                     handleLogout();
                     setIsMobileMenuOpen(false);
                   }}
-                  className="w-full text-center py-2 rounded-lg text-sm text-red-400"
+                  className="w-full text-center py-2.5 rounded-xl text-xs text-red-400 hover:bg-red-950/30 transition-colors"
                 >
                   Terminar Sessão
                 </button>
               </>
             ) : (
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-2 pt-1">
                 <Link
                   href="/login"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-center py-2 bg-[#181818] border border-[#282828] text-sm font-semibold text-zinc-200 rounded-lg"
+                  className="text-center py-2.5 bg-[#181818] border border-[#282828] text-xs font-semibold text-zinc-200 rounded-xl"
                 >
                   Entrar
                 </Link>
                 <Link
                   href="/register"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-center py-2 gold-gradient-bg text-sm font-bold text-[#0A0A0A] rounded-lg"
+                  className="text-center py-2.5 gold-gradient-bg text-xs font-bold text-[#0A0A0A] rounded-xl shadow-md"
                 >
                   Registar
                 </Link>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import { CrocodiloIcon } from '@/components/ui/Logo';
@@ -85,12 +86,12 @@ export default async function HomePage() {
 
       <main className="flex-1">
         {/* HERO SECTION */}
-        <section className="relative overflow-hidden pt-12 pb-24 md:pt-20 md:pb-32 border-b border-[#202020]">
+        <section className="relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24 border-b border-[#202020]">
           {/* Subtle Golden Ambient Glow */}
           <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-[#D9AD45]/10 rounded-full blur-[140px] pointer-events-none" />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               
               {/* Left Column: Value Proposition */}
               <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
@@ -101,21 +102,21 @@ export default async function HomePage() {
                 </div>
 
                 {/* Slogan & Title */}
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1]">
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1]">
                   A segurança certa, <br />
                   <span className="gold-gradient-text">à sua confiança.</span>
                 </h1>
 
                 {/* Description */}
-                <p className="text-base sm:text-lg text-zinc-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                <p className="text-sm sm:text-base md:text-lg text-zinc-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                   Encontre profissionais de segurança aprovados para proteger eventos, empresas, residências e outras necessidades. Escolha o serviço, consulte a disponibilidade e solicite profissionais adequados ao seu projeto.
                 </p>
 
                 {/* Hero CTAs */}
-                <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-2">
                   <Link
                     href="/marketplace"
-                    className="w-full sm:w-auto px-8 py-4 rounded-xl gold-gradient-bg text-[#0A0A0A] font-bold text-base hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-[#D9AD45]/20 flex items-center justify-center gap-2"
+                    className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-xl gold-gradient-bg text-[#0A0A0A] font-bold text-sm sm:text-base hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-[#D9AD45]/20 flex items-center justify-center gap-2"
                   >
                     <Search className="w-5 h-5 text-[#0A0A0A]" />
                     Encontrar um Segurança
@@ -123,25 +124,25 @@ export default async function HomePage() {
 
                   <Link
                     href="/register?role=pro"
-                    className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#141414] hover:bg-[#1E1E1E] text-white border border-[#2F2F2F] hover:border-[#D9AD45]/50 font-semibold text-base transition-all flex items-center justify-center gap-2"
+                    className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-xl bg-[#141414] hover:bg-[#1E1E1E] text-white border border-[#2F2F2F] hover:border-[#D9AD45]/50 font-semibold text-sm sm:text-base transition-all flex items-center justify-center gap-2"
                   >
                     <Users className="w-5 h-5 text-[#F2CC70]" />
                     Trabalhar como Segurança
                   </Link>
                 </div>
 
-                {/* Key Bullet Highlights */}
-                <div className="pt-6 grid grid-cols-3 gap-4 border-t border-[#202020] text-left">
-                  <div>
-                    <span className="block text-2xl font-black text-white">100%</span>
+                {/* Key Bullet Highlights (Mobile Optimized) */}
+                <div className="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 border-t border-[#202020] text-center sm:text-left">
+                  <div className="p-3 sm:p-0 rounded-xl bg-[#121212] sm:bg-transparent border border-[#222] sm:border-0">
+                    <span className="block text-xl sm:text-2xl font-black text-white">100%</span>
                     <span className="text-xs text-zinc-400">Desarmados & Legais</span>
                   </div>
-                  <div>
-                    <span className="block text-2xl font-black text-[#F2CC70]">BI & Antecedentes</span>
+                  <div className="p-3 sm:p-0 rounded-xl bg-[#121212] sm:bg-transparent border border-[#222] sm:border-0">
+                    <span className="block text-xl sm:text-2xl font-black text-[#F2CC70]">BI & Registo</span>
                     <span className="text-xs text-zinc-400">Verificação Rigorosa</span>
                   </div>
-                  <div>
-                    <span className="block text-2xl font-black text-white">M-Pesa / e-Mola</span>
+                  <div className="p-3 sm:p-0 rounded-xl bg-[#121212] sm:bg-transparent border border-[#222] sm:border-0">
+                    <span className="block text-xl sm:text-2xl font-black text-white">M-Pesa / e-Mola</span>
                     <span className="text-xs text-zinc-400">Pagamentos Nacionais</span>
                   </div>
                 </div>
@@ -149,9 +150,9 @@ export default async function HomePage() {
 
               {/* Right Column: Visual Shield Card Showcase */}
               <div className="lg:col-span-5">
-                <div className="relative mx-auto max-w-md bg-gradient-to-b from-[#1E1E1E] to-[#121212] p-6 sm:p-8 rounded-2xl border border-[#D9AD45]/30 shadow-2xl gold-border-glow">
+                <div className="relative mx-auto max-w-md bg-gradient-to-b from-[#1E1E1E] to-[#121212] p-5 sm:p-8 rounded-2xl border border-[#D9AD45]/30 shadow-2xl gold-border-glow">
                   {/* Decorative badge header */}
-                  <div className="flex items-center justify-between pb-6 border-b border-[#262626]">
+                  <div className="flex items-center justify-between pb-5 border-b border-[#262626]">
                     <div className="flex items-center gap-3">
                       <CrocodiloIcon className="w-10 h-10" />
                       <div>
@@ -165,7 +166,7 @@ export default async function HomePage() {
                   </div>
 
                   {/* Highlights list */}
-                  <div className="py-6 space-y-4">
+                  <div className="py-5 space-y-3.5">
                     <div className="flex items-start gap-3">
                       <div className="p-1.5 rounded-lg bg-[#252525] text-[#D9AD45]">
                         <FileCheck2 className="w-4 h-4" />
@@ -209,6 +210,49 @@ export default async function HomePage() {
               </div>
 
             </div>
+
+            {/* WIDESCREEN HERO COVER BANNER (EQUIPE DE SEGURANÇA CROCODILO VIGILANTE) */}
+            <div className="mt-10 sm:mt-14 relative rounded-2xl sm:rounded-3xl overflow-hidden border border-[#D9AD45]/40 shadow-2xl gold-border-glow group">
+              <div className="relative w-full h-56 sm:h-80 md:h-[440px] lg:h-[500px]">
+                <Image
+                  src="/equipe-crocodilo.png"
+                  alt="Equipe de Segurança Crocodilo Vigilante"
+                  fill
+                  className="object-cover object-center filter brightness-[0.96] group-hover:scale-[1.02] transition-transform duration-700"
+                  priority
+                />
+
+                {/* Subtle gradient overlays for cinematic lighting and text legibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/20 to-black/30" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/50 via-transparent to-[#0A0A0A]/50 hidden sm:block" />
+
+
+
+                {/* Bottom Card / Floating Banner Footer */}
+                <div className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 flex flex-col sm:flex-row items-stretch sm:items-end justify-between gap-3">
+                  <div className="bg-black/80 backdrop-blur-md p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-[#D9AD45]/30 max-w-xl">
+                    <span className="text-[10px] font-mono font-bold uppercase text-[#D9AD45] tracking-wider block">
+                      Corpo de Profissionais Verificados
+                    </span>
+                    <h3 className="text-sm sm:text-xl font-black text-white mt-0.5">
+                      Segurança Privada Desarmada de Alto Padrão
+                    </h3>
+                    <p className="text-[11px] sm:text-xs text-zinc-300 mt-1 line-clamp-2">
+                      Fardamento institucional, crachá oficial e atuação preventiva para eventos, empresas, condomínios e estaleiros em Moçambique.
+                    </p>
+                  </div>
+
+                  <Link
+                    href="/marketplace"
+                    className="px-5 py-3 rounded-xl gold-gradient-bg text-[#0A0A0A] font-bold text-xs sm:text-sm hover:brightness-110 active:scale-95 transition-all shadow-xl flex items-center justify-center gap-2 flex-shrink-0"
+                  >
+                    <span>Contratar Seguranças</span>
+                    <ArrowRight className="w-4 h-4 text-[#0A0A0A]" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+
           </div>
         </section>
 

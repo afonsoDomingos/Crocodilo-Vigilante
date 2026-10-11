@@ -215,14 +215,14 @@ function AdminDashboardContent() {
                 </div>
 
                 {/* Review action buttons */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 w-full sm:w-auto">
                   <button
                     onClick={() => {
                       setReviewModalApp(app);
                       setReviewStatus(app.status === 'APPROVED' ? 'SUSPENDED' : 'APPROVED');
                       setAdminNotes(app.adminNotes || '');
                     }}
-                    className="px-4 py-2 rounded-xl bg-[#222] hover:bg-[#2b2b2b] text-xs font-semibold text-[#F2CC70] border border-[#333] transition-colors"
+                    className="w-full sm:w-auto text-center px-4 py-2.5 rounded-xl bg-[#222] hover:bg-[#2b2b2b] text-xs font-semibold text-[#F2CC70] border border-[#333] transition-colors"
                   >
                     Avaliar Candidatura
                   </button>
@@ -233,13 +233,16 @@ function AdminDashboardContent() {
         </div>
 
         {/* AUDIT LOG TABLE */}
-        <div className="bg-[#141414] border border-[#222] p-6 rounded-2xl space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-[#202020]">
+        <div className="bg-[#141414] border border-[#222] p-5 sm:p-6 rounded-2xl space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-[#202020] gap-1">
             <h2 className="text-base font-bold text-white flex items-center gap-2">
               <Activity className="w-5 h-5 text-[#D9AD45]" />
               Registo de Auditoria Operacional (Audit Trail)
             </h2>
-            <span className="text-xs text-zinc-500">Ações críticas monitorizadas</span>
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] text-[#D9AD45] sm:hidden">← Deslize para ver colunas →</span>
+              <span className="text-xs text-zinc-500 hidden sm:inline">Ações críticas monitorizadas</span>
+            </div>
           </div>
 
           <div className="overflow-x-auto">

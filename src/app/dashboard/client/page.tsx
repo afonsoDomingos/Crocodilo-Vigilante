@@ -310,16 +310,16 @@ function ClientDashboardContent() {
                   </div>
 
                   {/* Actions footer */}
-                  <div className="pt-3 border-t border-[#202020] flex items-center justify-between">
+                  <div className="pt-3 border-t border-[#202020] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                     <span className="text-[11px] text-zinc-500">
                       ID de Registo: <span className="font-mono text-zinc-400">{booking.id}</span>
                     </span>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 w-full sm:w-auto">
                       {booking.guard && (
                         <button
                           onClick={() => setReviewModalBooking(booking)}
-                          className="px-3 py-1.5 rounded-lg bg-[#222] hover:bg-[#2b2b2b] text-xs font-semibold text-[#F2CC70] flex items-center gap-1.5 transition-colors border border-[#333]"
+                          className="w-full sm:w-auto px-4 py-2 rounded-xl bg-[#222] hover:bg-[#2b2b2b] text-xs font-semibold text-[#F2CC70] flex items-center justify-center gap-1.5 transition-colors border border-[#333]"
                         >
                           <Star className="w-3.5 h-3.5 fill-[#D9AD45] text-[#D9AD45]" />
                           <span>Avaliar Serviço</span>

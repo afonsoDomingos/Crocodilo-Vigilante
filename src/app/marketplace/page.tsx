@@ -337,7 +337,7 @@ function MarketplaceContent() {
         </div>
 
         {/* Results Counter */}
-        <div className="flex items-center justify-between mb-6 text-xs text-zinc-400">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 text-xs text-zinc-400">
           <div>
             Apresentando <strong className="text-white">{guards.length}</strong> profissionais aprovados e disponíveis
           </div>
@@ -711,39 +711,39 @@ function MarketplaceContent() {
                     <label className="block text-[11px] font-semibold text-zinc-400 mb-1">
                       Método de Pagamento em Moçambique *
                     </label>
-                    <div className="grid grid-cols-3 gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                       <button
                         type="button"
                         onClick={() => setPaymentMethod('MPESA')}
-                        className={`py-2 px-3 rounded-lg text-xs font-bold border transition-colors ${
+                        className={`py-2.5 px-3 rounded-lg text-xs font-bold border transition-colors flex items-center justify-center gap-2 ${
                           paymentMethod === 'MPESA'
-                            ? 'bg-red-950/80 border-red-600 text-red-200'
-                            : 'bg-[#1C1C1C] border-[#2C2C2C] text-zinc-400'
+                            ? 'bg-red-950/80 border-red-600 text-red-200 shadow-sm'
+                            : 'bg-[#1C1C1C] border-[#2C2C2C] text-zinc-400 hover:text-white'
                         }`}
                       >
-                        M-Pesa (Vodacom)
+                        <span>M-Pesa (Vodacom)</span>
                       </button>
                       <button
                         type="button"
                         onClick={() => setPaymentMethod('EMOLA')}
-                        className={`py-2 px-3 rounded-lg text-xs font-bold border transition-colors ${
+                        className={`py-2.5 px-3 rounded-lg text-xs font-bold border transition-colors flex items-center justify-center gap-2 ${
                           paymentMethod === 'EMOLA'
-                            ? 'bg-amber-950/80 border-amber-600 text-amber-200'
-                            : 'bg-[#1C1C1C] border-[#2C2C2C] text-zinc-400'
+                            ? 'bg-amber-950/80 border-amber-600 text-amber-200 shadow-sm'
+                            : 'bg-[#1C1C1C] border-[#2C2C2C] text-zinc-400 hover:text-white'
                         }`}
                       >
-                        e-Mola (Movitel)
+                        <span>e-Mola (Movitel)</span>
                       </button>
                       <button
                         type="button"
                         onClick={() => setPaymentMethod('MANUAL')}
-                        className={`py-2 px-3 rounded-lg text-xs font-bold border transition-colors ${
+                        className={`py-2.5 px-3 rounded-lg text-xs font-bold border transition-colors flex items-center justify-center gap-2 ${
                           paymentMethod === 'MANUAL'
-                            ? 'bg-zinc-800 border-zinc-500 text-white'
-                            : 'bg-[#1C1C1C] border-[#2C2C2C] text-zinc-400'
+                            ? 'bg-zinc-800 border-zinc-500 text-white shadow-sm'
+                            : 'bg-[#1C1C1C] border-[#2C2C2C] text-zinc-400 hover:text-white'
                         }`}
                       >
-                        Manual / Depósito
+                        <span>Manual / Depósito</span>
                       </button>
                     </div>
 

@@ -212,12 +212,12 @@ function ProfessionalDashboardContent() {
             <span className="text-xs text-zinc-500 font-mono">Conformidade Legal MZ</span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 pt-2">
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 pt-2">
             {/* Step 1 */}
             <div className="p-3 rounded-xl bg-[#1C1C1C] border border-emerald-800/40 text-emerald-300">
               <div className="flex items-center justify-between text-xs font-bold mb-1">
                 <span>Etapa 1</span>
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
               </div>
               <p className="text-[11px] font-semibold text-white">Criação da Conta</p>
               <p className="text-[10px] text-zinc-400 mt-0.5">Autenticação validada</p>
@@ -227,20 +227,20 @@ function ProfessionalDashboardContent() {
             <div className="p-3 rounded-xl bg-[#1C1C1C] border border-[#2A2A2A]">
               <div className="flex items-center justify-between text-xs font-bold mb-1">
                 <span className="text-[#D9AD45]">Etapa 2</span>
-                <CheckCircle2 className="w-4 h-4 text-zinc-500" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-zinc-500" />
               </div>
               <p className="text-[11px] font-semibold text-white">Dados Pessoais</p>
-              <p className="text-[10px] text-zinc-400 mt-0.5">BI e Contacto de Emergência</p>
+              <p className="text-[10px] text-zinc-400 mt-0.5">BI e Contactos</p>
             </div>
 
             {/* Step 3 */}
             <div className="p-3 rounded-xl bg-[#1C1C1C] border border-[#2A2A2A]">
               <div className="flex items-center justify-between text-xs font-bold mb-1">
                 <span className="text-[#D9AD45]">Etapa 3</span>
-                <CheckCircle2 className="w-4 h-4 text-zinc-500" />
+                <CheckCircle2 className="w-3.5 h-3.5 text-zinc-500" />
               </div>
               <p className="text-[11px] font-semibold text-white">Perfil Profissional</p>
-              <p className="text-[10px] text-zinc-400 mt-0.5">Competências e Experiência</p>
+              <p className="text-[10px] text-zinc-400 mt-0.5">Competências & Exp.</p>
             </div>
 
             {/* Step 4 */}
@@ -254,13 +254,13 @@ function ProfessionalDashboardContent() {
             </div>
 
             {/* Step 5 */}
-            <div className="p-3 rounded-xl bg-[#1C1C1C] border border-[#2A2A2A]">
+            <div className="col-span-2 sm:col-span-1 p-3 rounded-xl bg-[#1C1C1C] border border-[#2A2A2A]">
               <div className="flex items-center justify-between text-xs font-bold mb-1">
                 <span className="text-[#D9AD45]">Etapa 5</span>
                 <Clock className="w-3.5 h-3.5 text-zinc-500" />
               </div>
               <p className="text-[11px] font-semibold text-white">Análise da Equipa</p>
-              <p className="text-[10px] text-zinc-400 mt-0.5">Decisão da Administração</p>
+              <p className="text-[10px] text-zinc-400 mt-0.5">Decisão Administrativa</p>
             </div>
           </div>
         </div>
