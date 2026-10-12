@@ -20,6 +20,13 @@ export const metadata: Metadata = {
   title: 'CROCODILO VIGILANTE — A Segurança Certa, à sua Confiança',
   description:
     'Plataforma de contratação e verificação de profissionais de segurança privada desarmada em Moçambique. Eventos, empresas, residências, comércio e obras.',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png' },
+    ],
+    apple: '/apple-icon.png',
+  },
   keywords: [
     'segurança privada Moçambique',
     'vigilantes desarmados Maputo',

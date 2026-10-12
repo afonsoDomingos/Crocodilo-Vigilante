@@ -352,6 +352,216 @@ export default async function HomePage() {
           </div>
         </section>
 
+        {/* SECTION: PACOTES & PREÇOS OFICIAIS */}
+        <section id="pacotes" className="py-16 md:py-20 bg-[#0E0E0E] border-b border-[#202020] relative overflow-hidden">
+          {/* Subtle gold backdrop glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-[#D9AD45]/5 rounded-full blur-[130px] pointer-events-none" />
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#D9AD45] px-3 py-1 rounded-full bg-[#181818] border border-[#D9AD45]/30">
+                Tarifário Oficial
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-black text-white mt-3">
+                Pacotes de Segurança
+              </h2>
+              <p className="text-xs sm:text-sm text-zinc-400 mt-2">
+                Preços simples e transparentes por hora ou contrato mensal, adaptados à sua necessidade.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch max-w-5xl mx-auto">
+              
+              {/* CARD 1: PACOTE POR HORA */}
+              <div className="bg-[#141414] border border-[#262626] rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-[#D9AD45]/50 transition-all shadow-xl">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2.5">
+                      <div className="p-2.5 rounded-xl bg-[#202020] text-[#D9AD45]">
+                        <Clock className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-black text-white">Pacote por Hora</h3>
+                        <p className="text-xs text-zinc-400">Eventos, reuniões e reforço pontual</p>
+                      </div>
+                    </div>
+                    <span className="text-[11px] font-bold uppercase px-2.5 py-1 rounded-full bg-emerald-950/80 text-emerald-400 border border-emerald-800/60">
+                      Negociável
+                    </span>
+                  </div>
+
+                  <p className="text-xs text-zinc-400 mt-2 pb-5 border-b border-[#202020]">
+                    Tarifas por hora com profissionais fardados e credenciados:
+                  </p>
+
+                  {/* Tiers List */}
+                  <div className="space-y-3 mt-5">
+                    <div className="flex items-center justify-between p-3 rounded-xl bg-[#1a1a1a] border border-[#252525]">
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-6 h-6 rounded-lg bg-[#252525] text-xs font-bold text-zinc-300 flex items-center justify-center">1</span>
+                        <span className="text-sm font-semibold text-white">1 Segurança</span>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-base font-black text-[#F2CC70]">400 MT</span>
+                        <span className="text-xs text-zinc-400"> / hora</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between p-3 rounded-xl bg-[#1a1a1a] border border-[#252525]">
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-6 h-6 rounded-lg bg-[#252525] text-xs font-bold text-zinc-300 flex items-center justify-center">2</span>
+                        <span className="text-sm font-semibold text-white">2 Seguranças</span>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-base font-black text-[#F2CC70]">800 MT</span>
+                        <span className="text-xs text-zinc-400"> / hora</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between p-3 rounded-xl bg-[#1a1a1a] border border-[#252525]">
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-6 h-6 rounded-lg bg-[#252525] text-xs font-bold text-zinc-300 flex items-center justify-center">3</span>
+                        <span className="text-sm font-semibold text-white">3 Seguranças</span>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-base font-black text-[#F2CC70]">1.200 MT</span>
+                        <span className="text-xs text-zinc-400"> / hora</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-[#1a1a1a] to-[#211d12] border border-[#D9AD45]/40">
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-6 h-6 rounded-lg gold-gradient-bg text-xs font-bold text-[#0A0A0A] flex items-center justify-center">4</span>
+                        <div>
+                          <span className="text-sm font-bold text-white">4 Seguranças</span>
+                          <span className="ml-2 text-[10px] font-semibold text-[#D9AD45] uppercase tracking-wider">Melhor Valor</span>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-base font-black text-[#F2CC70]">1.400 MT</span>
+                        <span className="text-xs text-zinc-400"> / hora</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Highlights list */}
+                  <div className="mt-5 pt-4 border-t border-[#202020] space-y-2 text-xs text-zinc-300">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#D9AD45] flex-shrink-0" />
+                      <span>Valores negociáveis para durações prolongadas ou equipas maiores</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#D9AD45] flex-shrink-0" />
+                      <span>Profissionais 100% desarmados, fardados e verificados</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-8 pt-4 border-t border-[#202020] flex flex-col sm:flex-row gap-3">
+                  <Link
+                    href="/marketplace"
+                    className="flex-1 py-3 px-4 rounded-xl gold-gradient-bg text-[#0A0A0A] font-bold text-xs text-center hover:brightness-110 active:scale-95 transition-all shadow-md flex items-center justify-center gap-1.5"
+                  >
+                    <span>Contratar no Marketplace</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                  <a
+                    href="https://wa.me/258866979225?text=Ol%C3%A1%2C%20gostaria%20de%20consultar%20ou%20negociar%20o%20Pacote%20por%20Hora%20da%20Crocodilo%20Vigilante."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-3 px-4 rounded-xl bg-[#202020] hover:bg-[#282828] text-white border border-[#303030] font-semibold text-xs text-center transition-all flex items-center justify-center gap-1.5"
+                  >
+                    <span>Negociar no WhatsApp</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* CARD 2: PACOTE MENSAL (DESTACADO) */}
+              <div className="bg-gradient-to-b from-[#181818] to-[#121212] border-2 border-[#D9AD45]/60 rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between hover:border-[#D9AD45] transition-all shadow-2xl relative gold-border-glow">
+                
+                {/* Featured Badge */}
+                <div className="absolute -top-3.5 left-6 px-3 py-1 rounded-full gold-gradient-bg text-[#0A0A0A] text-[10px] font-black uppercase tracking-wider shadow-md">
+                  Empresas & Residências • Mais Procurado
+                </div>
+
+                <div>
+                  <div className="flex items-center justify-between mb-4 mt-2">
+                    <div className="flex items-center gap-2.5">
+                      <div className="p-2.5 rounded-xl bg-[#D9AD45]/20 text-[#D9AD45]">
+                        <Building2 className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-black text-white">Pacote Mensal</h3>
+                        <p className="text-xs text-zinc-400">Residências, condomínios, comércio e obras</p>
+                      </div>
+                    </div>
+                    <span className="text-[11px] font-bold uppercase px-2.5 py-1 rounded-full bg-[#202020] text-[#F2CC70] border border-[#D9AD45]/40">
+                      Contrato Aberto
+                    </span>
+                  </div>
+
+                  <p className="text-xs text-zinc-400 mt-2 pb-5 border-b border-[#262626]">
+                    Vigilância contínua com máxima flexibilidade e segurança institucional:
+                  </p>
+
+                  {/* Main Price Box */}
+                  <div className="mt-5 p-5 rounded-2xl bg-[#0F0F0F] border border-[#2E2E2E] text-center">
+                    <span className="text-xs uppercase font-mono tracking-widest text-[#D9AD45] block">
+                      1 Mês Completo
+                    </span>
+                    <div className="flex items-baseline justify-center gap-2 mt-2">
+                      <span className="text-3xl sm:text-4xl font-black text-white">15.000 MT</span>
+                      <span className="text-xs text-zinc-400 font-medium">/ mês</span>
+                    </div>
+                    <div className="inline-flex items-center gap-1.5 mt-3 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-800/50 text-[11px] font-semibold text-emerald-300">
+                      <span>✓ Contrato Aberto — Sem Amarras Forçadas</span>
+                    </div>
+                  </div>
+
+                  {/* Perks list */}
+                  <div className="mt-6 space-y-2.5 text-xs text-zinc-300">
+                    <div className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#D9AD45] flex-shrink-0" />
+                      <span>Posto de vigilância regular com escala acompanhada</span>
+                    </div>
+                    <div className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#D9AD45] flex-shrink-0" />
+                      <span>Supervisão operacional e substituição garantida</span>
+                    </div>
+                    <div className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#D9AD45] flex-shrink-0" />
+                      <span>Fardamento e crachás oficiais Crocodilo Vigilante</span>
+                    </div>
+                    <div className="flex items-center gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-[#D9AD45] flex-shrink-0" />
+                      <span>Renovação flexível mês a mês com suporte dedicado</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-8 pt-4 border-t border-[#262626] flex flex-col sm:flex-row gap-3">
+                  <a
+                    href="https://wa.me/258866979225?text=Ol%C3%A1%2C%20gostaria%20de%20aderir%20ao%20Pacote%20Mensal%20(15.000%20MT)%20com%20Contrato%20Aberto."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-3 px-4 rounded-xl gold-gradient-bg text-[#0A0A0A] font-bold text-xs text-center hover:brightness-110 active:scale-95 transition-all shadow-lg flex items-center justify-center gap-1.5"
+                  >
+                    <span>Aderir ao Pacote Mensal</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                  <a
+                    href="tel:+258866979225"
+                    className="py-3 px-4 rounded-xl bg-[#202020] hover:bg-[#282828] text-white border border-[#303030] font-semibold text-xs text-center transition-all flex items-center justify-center gap-1.5"
+                  >
+                    <span>Ligar: +258 86 697 9225</span>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
         {/* SECTION: PROFISSIONAIS VERIFICADOS EM DESTAQUE */}
         <section className="py-20 bg-[#0E0E0E] border-b border-[#202020]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

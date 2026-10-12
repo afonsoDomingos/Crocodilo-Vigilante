@@ -230,6 +230,31 @@ function MarketplaceContent() {
           </p>
         </div>
 
+        {/* Official Packages Summary Banner */}
+        <div className="mb-6 p-4 rounded-xl bg-gradient-to-r from-[#181818] via-[#16140e] to-[#181818] border border-[#D9AD45]/40 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg gold-gradient-bg flex items-center justify-center text-[#0A0A0A] font-bold flex-shrink-0 text-xs">
+              MT
+            </div>
+            <div>
+              <span className="font-bold text-white block">
+                Tarifário Oficial: <span className="text-[#F2CC70]">400 MT / hora</span> • <span className="text-emerald-400">Pacote Mensal 15.000 MT</span> (Contrato Aberto)
+              </span>
+              <span className="text-[11px] text-zinc-400">
+                1 seg: 400 MT/h • 2 seg: 800 MT/h • 3 seg: 1.200 MT/h • 4 seg: 1.400 MT/h (Valores negociáveis)
+              </span>
+            </div>
+          </div>
+          <a
+            href="https://wa.me/258866979225?text=Ol%C3%A1%2C%20gostaria%20de%20negociar%20um%20pacote%20de%20seguran%C3%A7a."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3 py-1.5 rounded-lg bg-[#252525] hover:bg-[#D9AD45] hover:text-[#0A0A0A] text-zinc-200 text-xs font-semibold border border-[#3a3a3a] transition-all text-center flex-shrink-0"
+          >
+            Negociar Pacote
+          </a>
+        </div>
+
         {/* Filter Bar */}
         <div className="bg-[#141414] border border-[#222] p-5 rounded-2xl mb-8 space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

@@ -147,7 +147,7 @@ export function getInitialSeedData(): DatabaseSchema {
         neighborhood: 'Polana / Central',
         rating: 4.9,
         reviewCount: 28,
-        hourlyRate: 350, // MZN
+        hourlyRate: 400, // MZN
         isVerified: true,
         isActive: true,
         isArmed: false,
@@ -169,7 +169,7 @@ export function getInitialSeedData(): DatabaseSchema {
         neighborhood: 'Matola Rio / Fomento',
         rating: 4.8,
         reviewCount: 35,
-        hourlyRate: 300, // MZN
+        hourlyRate: 400, // MZN
         isVerified: true,
         isActive: true,
         isArmed: false,
@@ -191,7 +191,7 @@ export function getInitialSeedData(): DatabaseSchema {
         neighborhood: 'Munhava / Chaimite',
         rating: 4.95,
         reviewCount: 42,
-        hourlyRate: 380, // MZN
+        hourlyRate: 400, // MZN
         isVerified: true,
         isActive: true,
         isArmed: false,
@@ -213,7 +213,7 @@ export function getInitialSeedData(): DatabaseSchema {
         neighborhood: 'Muhala / Centro Comercial',
         rating: 4.75,
         reviewCount: 19,
-        hourlyRate: 320, // MZN
+        hourlyRate: 400, // MZN
         isVerified: true,
         isActive: true,
         isArmed: false,

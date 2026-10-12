@@ -140,6 +140,12 @@ export default function Navbar() {
             Serviços
           </Link>
           <Link
+            href="/#pacotes"
+            className="text-sm font-medium text-zinc-300 hover:text-[#F2CC70] transition-colors"
+          >
+            Pacotes & Preços
+          </Link>
+          <Link
             href="/marketplace"
             className="flex items-center gap-1.5 text-sm font-semibold text-[#F2CC70] hover:text-[#FFF] transition-colors"
           >
@@ -343,6 +349,13 @@ export default function Navbar() {
               className="block px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-300 hover:bg-[#1a1a1a] hover:text-[#F2CC70] transition-colors"
             >
               Categorias de Segurança
+            </Link>
+            <Link
+              href="/#pacotes"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-300 hover:bg-[#1a1a1a] hover:text-[#F2CC70] transition-colors"
+            >
+              Pacotes & Preços
             </Link>
             <Link
               href="/#confianca"
